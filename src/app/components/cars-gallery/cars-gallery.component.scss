@@ -1,0 +1,60 @@
+.wraper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    .filter-block {
+        padding: 15px 10px;
+        .category {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin: 15px 0;
+        }
+    }
+
+    .cars-block {
+
+        .item {
+            display: flex;
+            border: 1px solid #000000;
+
+            .wrap {
+                width: 30%;
+
+                .img-block {
+                    height: 100%;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                
+            }
+
+            .info {
+                padding:0 10px;
+                width: 70%;
+
+                h3 {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    .price {
+
+                        color: green
+                    }
+                }
+                
+                p {
+                    margin-bottom: 5px;
+                }
+
+                button {
+                    margin: 25px 0 10px 0;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "cars":[
+      {
+        "brand": "Mercedes",
+        "model": "C63 AMG",
+        "year": "2015",
+        "color": "серый",
+        "engine": "4л",
+        "price": "50000",
+        "img": "mercedes-benz_c-63-amg.jpg",
+        "description": "info about car"
+      },
+      {
+        "brand": "BMW",
+        "model": "M5 Competition",
+        "year": "2021",
+        "color": "серый",
+        "engine": "4.4л",
+        "price": "211999",
+        "img": "bmw-m5.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Cadillac",
+        "model": "Escalade",
+        "year": "2014",
+        "color": "чёрный",
+        "engine": "6.2л",
+        "price": "54700",
+        "img": "cadillac_escalade.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Mercedes",
+        "model": "GLE Coupe AMG 63S",
+        "year": "2021",
+        "color": "чёрный",
+        "engine": "4л",
+        "price": "211283",
+        "img": "mercedes-gle-63-amg.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Land Rover Range Rover",
+        "model": "SVAutobiography",
+        "year": "2020",
+        "color": "серый",
+        "engine": "5л",
+        "price": "217152",
+        "img": "land-rover-range-rover.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Mercedes",
+        "model": "AMG GT R",
+        "year": "2021",
+        "color": "чёрный",
+        "engine": "4л",
+        "price": "270538",
+        "img": "mercedes-benz-amg-gt.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Mercedes",
+        "model": "S-Class 500",
+        "year": "2021",
+        "color": "чёрный",
+        "engine": "3.0л",
+        "price": "229369",
+        "img": "mercedes-benz-s-class.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "BMW",
+        "model": "M8 Gran Coupe Competition",
+        "year": "2020",
+        "color": "чёрный",
+        "engine": "4.4л",
+        "price": "199000",
+        "img": "bmw_m8-gran-coupe.jpg",
+        "description": "info about car"        
+      },
+      {
+        "brand": "Dodge",
+        "model": "Challenger",
+        "year": "2018",
+        "color": "красный",
+        "engine": "3.6л",
+        "price": "26400",
+        "img": "dodge_challenger.jpg",
+        "description": "info about car"        
+      }
+    ]
+  }
