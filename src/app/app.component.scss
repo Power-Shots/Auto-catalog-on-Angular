@@ -1,12 +1,16 @@
 header {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 36, 36);
+    // background-color: rgb(255, 36, 36);
+    background-color: var(--accentColor);
 
     h1 {
         text-align: center;
         color: #ffffff;
         padding: 10px 0;
+        a {
+            color: #ffffff;
+        }
     }
 }
 

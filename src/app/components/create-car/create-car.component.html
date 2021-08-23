@@ -1,0 +1,45 @@
+<section class="create-car">
+    <div class="flex">
+        <h2>Добавить новую машину</h2>
+        <button class="go-back" (click)="goBack()">Назад</button>
+    </div>
+    <div class="wraper">
+        <form [formGroup]="carForm" (ngSubmit)="validationForm()">
+            <div class="form-group">
+                    <label for="carBrand">Марка машины</label>
+                    <input id="carBrand" class="form-control" formControlName="brand"/>
+            </div>
+            <div class="form-group">
+                <label for="carModel">Модель машины</label>
+                <input id="carModel" class="form-control" formControlName="model"/>
+            </div>
+            <div class="form-group">
+                <label for="carYear">Год выпуска</label>
+                <input id="carYear" class="form-control" formControlName="year"/>
+            </div>
+            <div class="form-group">
+                <label for="carColor">Цвет</label>
+                <input id="carColor" class="form-control" formControlName="color"/>
+            </div>
+            <div class="form-group">
+                <label for="carEngine">Объём в литрах</label>
+                <input id="carEngine" class="form-control" formControlName="engine"/>
+            </div>
+            <div class="form-group">
+                <label for="carPrice">Цена в $</label>
+                <input id="carPrice" class="form-control" formControlName="price"/>
+            </div>
+            <div class="form-group">
+                <label for="carDescription">Описание</label>
+                <textarea id="carDescription" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="carImg">Фото автомобиля</label>
+                <input type="file" name='' accept=".png, .jpg, .jpeg" id="carImg" class="form-control" formControlName="img"/>
+            </div>
+            <div class="form-group btn-block">
+                <button type="submit" [disabled]="carForm.invalid">Добавить</button>
+            </div>
+        </form>
+    </div>
+</section>

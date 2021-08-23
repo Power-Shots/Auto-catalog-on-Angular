@@ -3,27 +3,38 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 // Components
 import { AppComponent } from './app.component';
 
 // Services
 import { HttpService } from './services/http.service';
+import { writeJsonFile } from 'write-json-file';
+
 import { CarsGalleryComponent } from './components/cars-gallery/cars-gallery.component';
 import { CarsFilterComponent } from './components/cars-gallery/cars-filter/cars-filter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateCarComponent } from './components/create-car/create-car.component';
+import { EditCarComponent } from './components/edit-car/edit-car.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsGalleryComponent,
     CarsFilterComponent,
+    CreateCarComponent,
+    EditCarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    NgxSliderModule,
+    ReactiveFormsModule,
   ],
-  providers: [HttpService],
+  providers: [HttpService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

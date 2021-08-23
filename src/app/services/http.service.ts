@@ -18,7 +18,8 @@ export class HttpService {
         let carsList = data['cars'];
 
         return carsList.map(function(car: any): Car {
-          return new Car(car.brand,
+          return new Car(car.id,
+                         car.brand,
                          car.model,
                          car.year,
                          car.color,
@@ -33,6 +34,12 @@ export class HttpService {
         console.log('Error from service: ', error);
         return throwError(error);
       })
+    );
+  };
 
-    )};
+  postData(cars: Car[]){
+      
+      return this.http.post('http://localhost:3000/cars', cars);
+    
+  }
 }

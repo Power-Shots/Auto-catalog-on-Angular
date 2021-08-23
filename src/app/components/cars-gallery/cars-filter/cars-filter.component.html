@@ -1,1 +1,37 @@
-<p>cars-filter works!</p>
+<div class="filter-block">
+    <div class="category">
+        <label for="brand" >Марка</label>
+        <select (change)="selectCategory('brand', $event.target)" name="brand" id="">
+            <option value="">All</option>
+            <option *ngFor="let item of filterOptions.brand" value="{{item}}">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="category">
+        <label for="year" >Год</label>
+        <select (change)="selectCategory('year', $event.target)" name="year" id="">
+            <option value="">All</option>
+            <option *ngFor="let item of filterOptions.year" value="{{item}}">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="category">
+        <label for="color" >Цвет</label>
+        <select (change)="selectCategory('color', $event.target)" name="color" id="">
+            <option value="">All</option>
+            <option *ngFor="let item of filterOptions.color" value="{{item}}">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="category">
+        <label for="engine" >Объём</label>
+        <select (change)="selectCategory('engine', $event.target)" name="engine" id="">
+            <option value="">All</option>
+            <option *ngFor="let item of filterOptions.engine" value="{{item}}">{{item}}</option>
+        </select>
+    </div>
+
+    <div class="category" *ngIf="priceValue[1]>0">
+        <ngx-slider [(value)]='priceValue[0]' [(highValue)]='priceValue[1]' [options]="options" (click)="handleChange()"></ngx-slider>
+    </div>
+</div>

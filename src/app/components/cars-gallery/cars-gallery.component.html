@@ -1,54 +1,24 @@
-<div class="wraper">
-    <div class="filter-block">
-        <div class="category">
-            <label for="brand" >Марка</label>
-            <select (change)="selectCategory('brand', $event.target)" name="brand" id="">
-                <option value="">All</option>
-                <option *ngFor="let item of options.brand" value="{{item}}">{{item}}</option>
-            </select>
-        </div>
-
-        <div class="category">
-            <label for="year" >Год</label>
-            <select (change)="selectCategory('year', $event.target)" name="year" id="">
-                <option value="">All</option>
-                <option *ngFor="let item of options.year" value="{{item}}">{{item}}</option>
-            </select>
-        </div>
-
-        <div class="category">
-            <label for="color" >Цвет</label>
-            <select (change)="selectCategory('color', $event.target)" name="color" id="">
-                <option value="">All</option>
-                <option *ngFor="let item of options.color" value="{{item}}">{{item}}</option>
-            </select>
-        </div>
-
-        <div class="category">
-            <label for="engine" >Объём</label>
-            <select (change)="selectCategory('engine', $event.target)" name="engine" id="">
-                <option value="">All</option>
-                <option *ngFor="let item of options.engine" value="{{item}}">{{item}}</option>
-            </select>
-        </div>
-    </div>
-    <div class="cars-block">
-        <div *ngFor="let car of filtredCarsList" class="item">
-            <div class="wrap">
-                <div class="img-block">
-                    <img src="assets/img/cars/{{car.img}}">
+<section class="car-gallery">
+    <a routerLink="/create-new-car" class="add-car-btn">Добавить новую машину</a>
+    <div class="wraper">
+        <app-cars-filter #filterComp></app-cars-filter>
+        <div class="cars-block">
+            <div *ngFor="let car of filterComp.filtredCarsList" class="item">
+                <div class="wrap">
+                    <div class="img-block">
+                        <img src="assets/img/cars/{{car.img}}">
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <h3><span class="title">{{car?.brand}} {{car?.model}}</span> <span class="price">{{car?.price| currency:'USD': 'symbol-narrow': '4.0-0'}}</span></h3>
+                    <p>Год: {{car?.year}}</p>
+                    <p>Цвет: {{car?.color}}</p>
+                    <p>Объём: {{car?.engine}}л</p>
+                    <p>{{car?.description}}</p>
+                    <button (click)="editCarInfo(car.id)">Редактировать</button>
                 </div>
             </div>
-            
-            <div class="info">
-                <h3><span class="title">{{car?.brand}} {{car?.model}}</span> <span class="price">{{car?.price| currency:'USD': 'symbol-narrow': '4.0-0'}}</span></h3>
-                <p>Год: {{car?.year}}</p>
-                <p>Цвет: {{car?.color}}</p>
-                <p>Объём: {{car?.engine}}</p>
-                <p>{{car?.description}}</p>
-                <button (click)="editCarInfo(car)">Редактировать</button>
-            </div>
         </div>
     </div>
-</div>
-
+</section>

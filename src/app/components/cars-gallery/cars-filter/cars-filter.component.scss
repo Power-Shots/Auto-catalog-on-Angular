@@ -1,0 +1,8 @@
+.filter-block {
+    padding: 15px 10px;
+    .category {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 15px 0;
+    }
+}
