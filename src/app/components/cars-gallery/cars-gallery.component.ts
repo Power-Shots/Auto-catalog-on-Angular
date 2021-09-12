@@ -8,7 +8,7 @@ import { HttpService } from 'src/app/services/http.service';
   templateUrl: './cars-gallery.component.html',
   styleUrls: ['./cars-gallery.component.scss']
 })
-export class CarsGalleryComponent implements OnInit {
+export class CarsGalleryComponent {
 
   carsList: Car[]= [];
   filtredCarsList: Car[] = [];
@@ -23,14 +23,8 @@ export class CarsGalleryComponent implements OnInit {
     "description": ""
   };
   options: {[key:string]: any} = {}
-  constructor(private http: HttpService, private router: Router) { 
-   }
-
-  ngOnInit() {
-        
-  }  
-
- 
+  constructor(private http: HttpService, private router: Router) { }
+   
 
   editCarInfo(id: string){
     this.router.navigateByUrl('/edit-car/'+id);

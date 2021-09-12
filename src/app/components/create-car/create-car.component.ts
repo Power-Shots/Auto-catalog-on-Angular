@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
-import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-create-car',
@@ -20,7 +19,7 @@ export class CreateCarComponent implements OnInit {
     'price': '',
     'img': '',
     'description': '',  
-  }
+  };
   carsList: Car[] = [];
   carForm: FormGroup;
 
@@ -34,22 +33,29 @@ export class CreateCarComponent implements OnInit {
       'price': new FormControl(``, [Validators.required, Validators.pattern('[0-9]{1,}')]),
       'img': new FormControl(``, [Validators.required]),
       'description': new FormControl(``,  [Validators.required]),
-    })
-   }
+    });
+   };
 
   ngOnInit(): void {
     let carListData = localStorage.getItem('carList');
     if(carListData){
       carListData = JSON.parse(carListData);
       this.preparation(carListData)
-    }
-  }
+    };
+  };
 
   private preparation(obj: any){    
     let content = obj.map((item:any) => {
-      return new Car(item.id, item.brand, item.model, item.year, item.color,
-        item.engine, item.price, item.img, item.description)
-    })
+      return new Car( item.id,
+                      item.brand,
+                      item.model, 
+                      item.year, 
+                      item.color,
+                      item.engine, 
+                      item.price, 
+                      item.img, 
+                      item.description);
+    });
     this.carsList = content;
   }
 
@@ -70,12 +76,12 @@ export class CreateCarComponent implements OnInit {
 
     for(let key in carObj){
       if( carObj[key] === ''){
-        isValid = false
+        isValid = false;
       }
     }
 
     if(isValid){
-      this.addNewCar(this.newCar)
+      this.addNewCar(this.newCar);
     }
   }
 

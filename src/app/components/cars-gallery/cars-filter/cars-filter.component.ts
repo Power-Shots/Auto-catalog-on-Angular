@@ -1,4 +1,4 @@
-import { Options, LabelType } from '@angular-slider/ngx-slider/options';
+import { Options } from '@angular-slider/ngx-slider/options';
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/models/car';
 import { HttpService } from 'src/app/services/http.service';
@@ -19,7 +19,7 @@ export class CarsFilterComponent implements OnInit {
     "engine": "",
     "price": "",
     "img": "",
-    "description": ""
+    "description": "",
   };
 
   priceValue: number[] = [0,0]
@@ -92,7 +92,8 @@ export class CarsFilterComponent implements OnInit {
       if(isValid === true){
         this.filtredCarsList.push(this.carsList[i])
       }
-    }  
+    }
+    console.log(this.filtredCarsList)  
   }
 
   handleChange(){
@@ -108,11 +109,24 @@ export class CarsFilterComponent implements OnInit {
         let obj = this.carsList[i] as any;
         optionsSet.add(obj[key])
       }
-      this.filterOptions[key] = optionsSet;
+
+      let sortOptionsSet = [...optionsSet].sort();
+      this.filterOptions[key] = sortOptionsSet;
     }
     let maxPrice = Math.max(...this.filterOptions.price)
     this.priceValue[1] = maxPrice;
     this.options.ceil = maxPrice+1;
-    console.log(this.options)
+  }
+  
+  clearSelectedCategory(){
+   
+    for(let category in this.selectedCategory){
+      this.selectedCategory[category] = '';
+    }
+
+    this.filtredCarsList = this.carsList;
+    this.filterOptions = {};
+    this.applyFilter();
+    this.createOptions();    
   }
 }

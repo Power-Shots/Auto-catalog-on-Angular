@@ -1,7 +1,8 @@
 <div class="filter-block">
+    <button (click)="clearSelectedCategory()" class="clear-filter">Сбросить</button>
     <div class="category">
         <label for="brand" >Марка</label>
-        <select (change)="selectCategory('brand', $event.target)" name="brand" id="">
+        <select (change)="selectCategory('brand', $event.target)" name="brand" id="" value="{{selectedCategory.brand}}">
             <option value="">All</option>
             <option *ngFor="let item of filterOptions.brand" value="{{item}}">{{item}}</option>
         </select>
@@ -9,7 +10,7 @@
 
     <div class="category">
         <label for="year" >Год</label>
-        <select (change)="selectCategory('year', $event.target)" name="year" id="">
+        <select (change)="selectCategory('year', $event.target)" name="year" id="" value="{{selectedCategory.year}}">
             <option value="">All</option>
             <option *ngFor="let item of filterOptions.year" value="{{item}}">{{item}}</option>
         </select>
@@ -17,7 +18,7 @@
 
     <div class="category">
         <label for="color" >Цвет</label>
-        <select (change)="selectCategory('color', $event.target)" name="color" id="">
+        <select (change)="selectCategory('color', $event.target)" name="color" id="" value="{{selectedCategory.color}}">
             <option value="">All</option>
             <option *ngFor="let item of filterOptions.color" value="{{item}}">{{item}}</option>
         </select>
@@ -25,7 +26,7 @@
 
     <div class="category">
         <label for="engine" >Объём</label>
-        <select (change)="selectCategory('engine', $event.target)" name="engine" id="">
+        <select (change)="selectCategory('engine', $event.target)" name="engine" id="" value="{{selectedCategory.engine}}">
             <option value="">All</option>
             <option *ngFor="let item of filterOptions.engine" value="{{item}}">{{item}}</option>
         </select>

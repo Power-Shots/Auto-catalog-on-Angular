@@ -8,12 +8,9 @@ import { HttpService } from './services/http.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'myapp';
   cars: Car[] = [];
 
-  constructor(private http: HttpService){
-    
-  }
+  constructor(private http: HttpService){  }
 
   ngOnInit(){ }
 }

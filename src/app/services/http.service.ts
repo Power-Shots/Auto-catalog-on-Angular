@@ -38,8 +38,6 @@ export class HttpService {
   };
 
   postData(cars: Car[]){
-      
-      return this.http.post('http://localhost:3000/cars', cars);
-    
+    return this.http.post('http://localhost:3000/cars', cars);
   }
 }

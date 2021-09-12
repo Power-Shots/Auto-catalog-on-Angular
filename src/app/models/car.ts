@@ -9,5 +9,5 @@ export class Car {
         public price: string,
         public img: string,
         public description: string,
-    ){}
-}
+    ){ }
+};

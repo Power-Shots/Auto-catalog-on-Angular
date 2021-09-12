@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Car } from 'src/app/models/car';
-import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-edit-car',
@@ -40,7 +39,7 @@ export class EditCarComponent implements OnInit {
     let carListData = localStorage.getItem('carList');
     if(carListData){
       carListData = JSON.parse(carListData);
-      this.preparation(carListData)
+      this.preparation(carListData);
     }
   }
 
@@ -82,7 +81,7 @@ export class EditCarComponent implements OnInit {
 
     for(let key in carObj){
       if( carObj[key] === '' && +carObj.price < 1900 || +carObj.price > 2021 ){
-        isValid = false
+        isValid = false;
       }
     }
 
@@ -98,7 +97,7 @@ export class EditCarComponent implements OnInit {
   }
 
   deleteCar(){
-    this.carList.splice(this.index,1)
+    this.carList.splice(this.index,1);
     localStorage.setItem('carList', JSON.stringify(this.carList));
     this.router.navigateByUrl('/car-gallery');
   }
