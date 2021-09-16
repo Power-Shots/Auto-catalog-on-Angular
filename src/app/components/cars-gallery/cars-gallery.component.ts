@@ -9,7 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./cars-gallery.component.scss']
 })
 export class CarsGalleryComponent {
-
+  test= [];
   carsList: Car[]= [];
   filtredCarsList: Car[] = [];
   selectedCategory: {[key: string]: string} = {
