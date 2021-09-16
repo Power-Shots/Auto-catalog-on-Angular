@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-create-car',
   templateUrl: './create-car.component.html',
   styleUrls: ['./create-car.component.scss']
 })
-export class CreateCarComponent implements OnInit {
+export class CreateCarComponent {
   newCar: Car = {
     'id': '',
     'brand': '',
@@ -23,7 +24,7 @@ export class CreateCarComponent implements OnInit {
   carsList: Car[] = [];
   carForm: FormGroup;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpService) {
     this.carForm = new FormGroup({
       'brand': new FormControl(``, [Validators.required]),
       'model': new FormControl(``, [Validators.required]),
@@ -36,28 +37,6 @@ export class CreateCarComponent implements OnInit {
     });
    };
 
-  ngOnInit(): void {
-    let carListData = localStorage.getItem('carList');
-    if(carListData){
-      carListData = JSON.parse(carListData);
-      this.preparation(carListData)
-    };
-  };
-
-  private preparation(obj: any){    
-    let content = obj.map((item:any) => {
-      return new Car( item.id,
-                      item.brand,
-                      item.model, 
-                      item.year, 
-                      item.color,
-                      item.engine, 
-                      item.price, 
-                      item.img, 
-                      item.description);
-    });
-    this.carsList = content;
-  }
 
   validationForm(){
     let isValid = true;
@@ -81,13 +60,12 @@ export class CreateCarComponent implements OnInit {
     }
 
     if(isValid){
-      this.addNewCar(this.newCar);
+      this.submit(this.newCar);
     }
   }
 
-  addNewCar(car: Car){
-    this.carsList.push(car);
-    localStorage.setItem('carList', JSON.stringify(this.carsList));
+  submit(car: Car){
+    this.http.addNewCar(car);
     this.router.navigateByUrl('/car-gallery');
   }
 

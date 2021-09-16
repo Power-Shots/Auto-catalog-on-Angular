@@ -37,15 +37,16 @@ export class CarsFilterComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    let carListData = localStorage.getItem('carList');
-    if(carListData){
-      carListData = JSON.parse(carListData);
+    let carListData = this.http.getAllCarsFromLocalStorage();
+    console.log(carListData)
+    if(carListData.length>0){
       this.preparation(carListData);
     }
     else {
       this.http.getAllCars().subscribe(
         {
           next: (data: any) => {
+            console.log(data)
             this.carsList = data;
             this.filtredCarsList = data;
             this.createOptions();
@@ -102,7 +103,7 @@ export class CarsFilterComponent implements OnInit {
 
   
 
-  createOptions(){
+  private createOptions(){
     for(let key in this.carsList[0]){
       let optionsSet = new Set()
       for(let i=0; i< this.carsList.length; i++){

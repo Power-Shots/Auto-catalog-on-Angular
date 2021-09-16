@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Car } from 'src/app/models/car';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-edit-car',
@@ -28,7 +29,7 @@ export class EditCarComponent implements OnInit {
   carList: Car[] = [];
   carForm: any;
 
-  constructor(private router: Router, private route: ActivatedRoute ) { 
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpService ) { 
     this.routeSubcsription = route.params.subscribe(
       params => (this.id = params['id'])
     );
@@ -36,9 +37,8 @@ export class EditCarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let carListData = localStorage.getItem('carList');
-    if(carListData){
-      carListData = JSON.parse(carListData);
+    let carListData = this.http.getAllCarsFromLocalStorage();
+    if(carListData.length>0){
       this.preparation(carListData);
     }
   }
@@ -46,9 +46,13 @@ export class EditCarComponent implements OnInit {
   private preparation(obj: any){    
     let car = obj.filter((item:any)=> item.id === this.id);
     this.index = obj.findIndex((item:any)=> item.id === this.id);
-    this.carList = obj;
-    this.currentCar = car[0];
-    this.initForm();
+
+    if(+this.index === -1) this.router.navigateByUrl('/car-gallery');
+    else{
+      this.carList = obj;
+      this.currentCar = car[0];
+      this.initForm();
+    }
   }
 
   initForm(){
@@ -91,14 +95,12 @@ export class EditCarComponent implements OnInit {
   }
 
   replaceCar(){
-    this.carList[this.index] = this.currentCar;
-    localStorage.setItem('carList', JSON.stringify(this.carList));
+    this.http.replaceCar(+this.index, this.currentCar);
     this.router.navigateByUrl('/car-gallery');
   }
 
   deleteCar(){
-    this.carList.splice(this.index,1);
-    localStorage.setItem('carList', JSON.stringify(this.carList));
+    this.http.deleteCarById(+this.index);
     this.router.navigateByUrl('/car-gallery');
   }
 

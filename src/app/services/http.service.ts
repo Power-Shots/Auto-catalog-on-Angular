@@ -37,7 +37,31 @@ export class HttpService {
     );
   };
 
-  postData(cars: Car[]){
-    return this.http.post('http://localhost:3000/cars', cars);
+  getAllCarsFromLocalStorage(){
+     let response: string | null = localStorage.getItem('carList');
+
+     if(response){
+       let data = JSON.parse(response);
+       return data;
+     }
+     else return [];
+  }
+
+  addNewCar(car: Car){
+    let carsList = this.getAllCarsFromLocalStorage();
+    carsList.push(car);
+    localStorage.setItem('carList', JSON.stringify(carsList));
+  }
+
+  replaceCar(id: number, currentCar: Car){
+    let carsList = this.getAllCarsFromLocalStorage();
+    carsList[id] = currentCar;
+    localStorage.setItem('carList', JSON.stringify(carsList));
+  }
+
+  deleteCarById(id: number){
+    let carsList = this.getAllCarsFromLocalStorage();
+    carsList.splice(id,1);
+    localStorage.setItem('carList', JSON.stringify(carsList));
   }
 }
