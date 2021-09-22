@@ -95,13 +95,21 @@ export class EditCarComponent implements OnInit {
   }
 
   replaceCar(){
-    this.http.replaceCar(+this.index, this.currentCar);
-    this.router.navigateByUrl('/car-gallery');
+    let isReplace = window.confirm('Подтвердить?');
+
+    if(isReplace){
+      this.http.replaceCar(+this.index, this.currentCar);
+      this.router.navigateByUrl('/car-gallery');
+    }
   }
 
   deleteCar(){
-    this.http.deleteCarById(+this.index);
-    this.router.navigateByUrl('/car-gallery');
+    let isDelete = window.confirm('Удалить?');
+
+    if(isDelete){
+      this.http.deleteCarById(+this.index);
+      this.router.navigateByUrl('/car-gallery');
+    }
   }
 
   goBack(){
