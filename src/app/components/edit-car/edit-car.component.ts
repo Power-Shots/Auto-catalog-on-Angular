@@ -92,7 +92,7 @@ export class EditCarComponent implements OnInit {
       color: this.carForm.value.color,
       engine: this.carForm.value.engine,
       price: this.carForm.value.price,
-      img: this.carForm.value.img.replace(/^.*\\/, ''),
+      img: this.carForm.value.img,
       description: this.carForm.value.description,
     };
     let carObj = this.currentCar as any;
