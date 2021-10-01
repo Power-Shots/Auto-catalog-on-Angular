@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Car } from 'src/app/models/car';
-import { HttpService } from 'src/app/services/http.service';
+import { Car } from '../../models/car';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-create-car',

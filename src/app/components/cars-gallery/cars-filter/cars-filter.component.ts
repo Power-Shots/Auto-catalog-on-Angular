@@ -1,7 +1,7 @@
 import { Options } from '@angular-slider/ngx-slider/options';
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car';
-import { HttpService } from 'src/app/services/http.service';
+import { Car } from '../../../models/car';
+import { HttpService } from '../../../services/http.service';
 
 @Component({
   selector: 'app-cars-filter',
